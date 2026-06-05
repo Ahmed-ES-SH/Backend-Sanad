@@ -2,7 +2,6 @@ import {
   Controller,
   Post,
   Body,
-  UseGuards,
   HttpCode,
   HttpStatus,
   Get,
@@ -22,7 +21,6 @@ import {
 import { PaymentsService } from './payments.service';
 import { CreatePaymentIntentDto } from './dto/create-payment-intent.dto';
 import { CreatePaymentIntentResponseDto } from './dto/create-payment-intent-response.dto';
-import { AuthGuard } from '../auth/guards/auth.guard';
 import { PaymentResponseDto } from './dto/payment-response.dto';
 import { PaymentFilterDto } from './dto/payment-filter.dto';
 import { GetUser } from 'src/auth/decorators/current-user.decorator';
@@ -30,7 +28,6 @@ import { User } from 'src/user/schema/user.schema';
 
 @ApiTags('Payments')
 @ApiBearerAuth()
-@UseGuards(AuthGuard)
 @Controller('payments')
 export class PaymentsClientController {
   constructor(private readonly paymentsService: PaymentsService) {}

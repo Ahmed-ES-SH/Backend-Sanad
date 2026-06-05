@@ -8,7 +8,6 @@ import {
   Delete,
   Query,
   ParseUUIDPipe,
-  UseGuards,
 } from '@nestjs/common';
 import {
   ApiTags,
@@ -25,12 +24,9 @@ import { PaginationMetaDto } from '../DTO/pagination.dto';
 import { Category } from './schema/category.schema';
 import { Roles } from '../auth/decorators/Roles.decorator';
 import { UserRoleEnum } from '../auth/types/UserRoleEnum';
-import { AuthGuard } from '../auth/guards/auth.guard';
-import { RolesGuard } from '../auth/guards/roles.guard';
 
 @ApiTags('Admin - Categories')
 @ApiBearerAuth()
-@UseGuards(AuthGuard, RolesGuard)
 @Roles(UserRoleEnum.ADMIN, UserRoleEnum.SUPER_ADMIN)
 @Controller('admin/categories')
 export class CategoriesController {

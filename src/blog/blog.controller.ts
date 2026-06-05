@@ -8,7 +8,6 @@ import {
   Body,
   ParseUUIDPipe,
   Query,
-  UseGuards,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiParam } from '@nestjs/swagger';
 import { BlogService } from './blog.service';
@@ -17,11 +16,8 @@ import { UpdateArticleDto } from './dto/update-article.dto';
 import { Roles } from '../auth/decorators/Roles.decorator';
 import { UserRoleEnum } from '../auth/types/UserRoleEnum';
 import { GetAllArticlesQueryDto } from './dto/find-all.dto';
-import { AuthGuard } from '../auth/guards/auth.guard';
-import { RolesGuard } from '../auth/guards/roles.guard';
 
 @Controller('admin/blog')
-@UseGuards(AuthGuard, RolesGuard)
 @Roles(UserRoleEnum.ADMIN, UserRoleEnum.SUPER_ADMIN)
 @ApiTags('Blog')
 export class BlogController {

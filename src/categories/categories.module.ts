@@ -5,12 +5,11 @@ import { CategoriesService } from './categories.service';
 import { CategoriesController } from './categories.controller';
 import { CategoriesPublicController } from './categories.public.controller';
 import { AuthModule } from '../auth/auth.module';
-import { AuthGuard } from '../auth/guards/auth.guard';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Category]), AuthModule],
   controllers: [CategoriesController, CategoriesPublicController],
-  providers: [CategoriesService, AuthGuard],
+  providers: [CategoriesService],
   exports: [CategoriesService],
 })
 export class CategoriesModule {}

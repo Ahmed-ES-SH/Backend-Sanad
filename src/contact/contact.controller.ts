@@ -6,14 +6,11 @@ import {
   Param,
   Query,
   ParseUUIDPipe,
-  UseGuards,
 } from '@nestjs/common';
 import { ContactService } from './contact.service';
 import { ContactQueryDto } from './dto/contact-query.dto';
 import { Roles } from '../auth/decorators/Roles.decorator';
 import { UserRoleEnum } from '../auth/types/UserRoleEnum';
-import { AuthGuard } from '../auth/guards/auth.guard';
-import { RolesGuard } from '../auth/guards/roles.guard';
 import {
   ApiTags,
   ApiBearerAuth,
@@ -22,7 +19,6 @@ import {
   ApiParam,
 } from '@nestjs/swagger';
 
-@UseGuards(AuthGuard, RolesGuard)
 @Roles(UserRoleEnum.ADMIN, UserRoleEnum.SUPER_ADMIN)
 @ApiTags('Contact (Admin)')
 @ApiBearerAuth()

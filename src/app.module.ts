@@ -21,6 +21,7 @@ import { ServicesModule } from './services/services.module';
 import { ContactModule } from './contact/contact.module';
 import { CartModule } from './cart/cart.module';
 import { AuthGuard } from './auth/guards/auth.guard';
+import { RolesGuard } from './auth/guards/roles.guard';
 import { JwtModule } from '@nestjs/jwt';
 import { BlogModule } from './blog/blog.module';
 import { CategoriesModule } from './categories/categories.module';
@@ -97,6 +98,11 @@ const JWT_OPTIONS = {
     {
       provide: APP_GUARD,
       useClass: AuthGuard,
+    },
+    // roles guard for RBAC
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
     },
   ],
 })

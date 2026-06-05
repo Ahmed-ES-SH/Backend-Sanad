@@ -8,7 +8,6 @@ import {
   Patch,
   Post,
   Query,
-  UseGuards,
 } from '@nestjs/common';
 import { ServicesService } from './services.service';
 import { Service } from './schema/service.schema';
@@ -18,8 +17,6 @@ import { ReorderServicesDto } from './dto/reorder-services.dto';
 import { ServicesPaginationQueryDto } from './dto/services-pagination-query.dto';
 import { Roles } from '../auth/decorators/Roles.decorator';
 import { UserRoleEnum } from '../auth/types/UserRoleEnum';
-import { AuthGuard } from '../auth/guards/auth.guard';
-import { RolesGuard } from '../auth/guards/roles.guard';
 import { PaginationMetaDto } from '../DTO/pagination.dto';
 import {
   ApiTags,
@@ -31,7 +28,6 @@ import {
 
 @ApiTags('Services')
 @ApiBearerAuth()
-@UseGuards(AuthGuard, RolesGuard)
 @Roles(UserRoleEnum.ADMIN, UserRoleEnum.SUPER_ADMIN)
 @Controller('admin/services')
 export class ServicesController {

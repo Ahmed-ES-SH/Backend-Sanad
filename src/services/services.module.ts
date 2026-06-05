@@ -6,12 +6,11 @@ import { ServicesController } from './services.controller';
 import { ServicesPublicController } from './services.public.controller';
 import { CategoriesModule } from '../categories/categories.module';
 import { AuthModule } from '../auth/auth.module';
-import { AuthGuard } from '../auth/guards/auth.guard';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Service]), CategoriesModule, AuthModule],
   controllers: [ServicesController, ServicesPublicController],
-  providers: [ServicesService, AuthGuard],
+  providers: [ServicesService],
   exports: [ServicesService],
 })
 export class ServicesModule {}

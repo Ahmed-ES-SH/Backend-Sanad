@@ -9,7 +9,6 @@ import { PaymentsWebhookController } from './payments.webhook.controller';
 import { ConfigModule } from '@nestjs/config';
 import { StripeModule } from '../stripe/stripe.module';
 import { AuthModule } from '../auth/auth.module';
-import { AuthGuard } from '../auth/guards/auth.guard';
 
 @Module({
   imports: [
@@ -23,7 +22,7 @@ import { AuthGuard } from '../auth/guards/auth.guard';
     PaymentsClientController,
     PaymentsWebhookController,
   ],
-  providers: [PaymentsService, AuthGuard],
+  providers: [PaymentsService],
   exports: [PaymentsService],
 })
 export class PaymentsModule {}

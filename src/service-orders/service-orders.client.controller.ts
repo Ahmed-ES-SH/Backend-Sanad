@@ -5,7 +5,6 @@ import {
   Param,
   Query,
   ParseUUIDPipe,
-  UseGuards,
 } from '@nestjs/common';
 import {
   ApiTags,
@@ -16,14 +15,12 @@ import {
   ApiQuery,
 } from '@nestjs/swagger';
 import { ServiceOrdersService } from './service-orders.service';
-import { AuthGuard } from '../auth/guards/auth.guard';
 import { GetUser } from '../auth/decorators/current-user.decorator';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { OrderStatus } from './enums/order-status.enum';
 
 @ApiTags('Service Orders (User)')
 @ApiBearerAuth()
-@UseGuards(AuthGuard)
 @Controller('orders')
 export class ServiceOrdersClientController {
   constructor(private readonly serviceOrdersService: ServiceOrdersService) {}

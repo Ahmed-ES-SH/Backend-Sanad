@@ -5,7 +5,6 @@ import {
   Param,
   Query,
   ParseUUIDPipe,
-  UseGuards,
 } from '@nestjs/common';
 import {
   ApiTags,
@@ -19,8 +18,6 @@ import { PaymentsService } from './payments.service';
 import { PaymentFilterDto } from './dto/payment-filter.dto';
 import { PaymentResponseDto } from './dto/payment-response.dto';
 import { RefundResponseDto } from './dto/refund-response.dto';
-import { AuthGuard } from '../auth/guards/auth.guard';
-import { RolesGuard } from '../auth/guards/roles.guard';
 import { Roles } from '../auth/decorators/Roles.decorator';
 import { UserRoleEnum } from '../auth/types/UserRoleEnum';
 import { PaymentStatisticsResponseDto } from './dto/payment-statistics-response.dto';
@@ -28,7 +25,6 @@ import { PaginationMetaDto } from 'src/DTO/pagination.dto';
 
 @ApiTags('Payments (Admin)')
 @ApiBearerAuth()
-@UseGuards(AuthGuard, RolesGuard)
 @Roles(UserRoleEnum.ADMIN)
 @Controller('admin/payments')
 export class PaymentsController {

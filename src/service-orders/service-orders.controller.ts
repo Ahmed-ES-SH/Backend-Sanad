@@ -7,7 +7,6 @@ import {
   Query,
   Body,
   ParseUUIDPipe,
-  UseGuards,
 } from '@nestjs/common';
 import {
   ApiTags,
@@ -18,8 +17,6 @@ import {
   ApiQuery,
 } from '@nestjs/swagger';
 import { ServiceOrdersService } from './service-orders.service';
-import { AuthGuard } from '../auth/guards/auth.guard';
-import { RolesGuard } from '../auth/guards/roles.guard';
 import { Roles } from '../auth/decorators/Roles.decorator';
 import { UserRoleEnum } from '../auth/types/UserRoleEnum';
 import { UpdateOrderStatusDto } from './dto/update-order-status.dto';
@@ -28,7 +25,6 @@ import { OrderFilterDto } from './dto/order-filter.dto';
 
 @ApiTags('Service Orders (Admin)')
 @ApiBearerAuth()
-@UseGuards(AuthGuard, RolesGuard)
 @Roles(UserRoleEnum.ADMIN)
 @Controller('admin/orders')
 export class ServiceOrdersController {

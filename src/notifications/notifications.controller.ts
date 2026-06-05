@@ -6,7 +6,6 @@ import {
   Param,
   Query,
   Body,
-  UseGuards,
   Request,
   HttpCode,
   HttpStatus,
@@ -24,12 +23,10 @@ import { SendNotificationDto } from './dto/send-notification.dto';
 import { BroadcastNotificationDto } from './dto/broadcast-notification.dto';
 import { Roles } from '../auth/decorators/Roles.decorator';
 import { UserRoleEnum } from '../auth/types/UserRoleEnum';
-import { RolesGuard } from '../auth/guards/roles.guard';
 
 @ApiTags('Admin - Notifications')
 @ApiBearerAuth()
 @Controller('admin/notifications')
-@UseGuards(RolesGuard)
 @Roles(UserRoleEnum.ADMIN, UserRoleEnum.SUPER_ADMIN)
 export class NotificationsController {
   constructor(private readonly notificationsService: NotificationsService) {}

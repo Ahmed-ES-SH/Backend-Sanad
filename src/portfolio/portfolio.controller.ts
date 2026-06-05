@@ -10,7 +10,6 @@ import {
   Delete,
   Get,
   Query,
-  UseGuards,
 } from '@nestjs/common';
 import { PortfolioService } from './portfolio.service';
 import { Roles } from '../auth/decorators/Roles.decorator';
@@ -26,11 +25,8 @@ import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
 import { ReorderProjectsDto } from './dto/reorder-projects.dto';
 import { AdminFilterProjectsQueryDto } from './dto/admin-filter-projects-query.dto';
-import { AuthGuard } from '../auth/guards/auth.guard';
-import { RolesGuard } from '../auth/guards/roles.guard';
 
 @ApiTags('Portfolio (Admin)')
-@UseGuards(AuthGuard, RolesGuard)
 @Controller('admin/portfolio')
 @Roles(UserRoleEnum.ADMIN, UserRoleEnum.SUPER_ADMIN)
 export class PortfolioController {
