@@ -107,15 +107,9 @@ export class AuthPublicController {
         avatar: req.user.avatar,
       });
 
-      res.cookie('sanad_auth_token', result.access_token, {
-        httpOnly: true,
-        secure: true,
-        sameSite: 'lax',
-        maxAge: 5 * 24 * 60 * 60 * 1000,
-        path: '/',
-      });
-
-      return res.redirect(`${process.env.FRONTEND_URL}?refresh=1`);
+      return res.redirect(
+        `${process.env.FRONTEND_URL}/auth/google/callback?t=${result.access_token}`,
+      );
     } catch {
       return res.redirect(`${process.env.FRONTEND_URL}`);
     }
